@@ -14,14 +14,14 @@ datasource db {
 }
 
 /// 販売データを表すモデル
-model SaleRecord {
+model SalesRecord {
   id           Int      @id @default(autoincrement())
-  productName  String   @map("商品名")
-  quantity     Int      @map("数量")
-  price        Int      @map("価格")
-  size         String   @map("サイズ")
-  color        String   @map("色")
-  storeName    String   @map("店舗")
-  storeAddress String   @map("店舗住所")
+  productName  String
+  quantity     Int
+  price        Int
+  size         String
+  color        String
+  storeName    String
+  storeAddress String
   createdAt    DateTime @default(now())
 }

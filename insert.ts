@@ -14,7 +14,7 @@ async function main() {
     const salesData = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
 
     for (const record of salesData) {
-      await prisma.saleRecord.create({
+      await prisma.salesRecord.create({
         data: {
           productName: record.productName,
           quantity: record.quantity,
