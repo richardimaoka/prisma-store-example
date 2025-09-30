@@ -12,7 +12,9 @@
       "runtimeArgs": ["run", "insert-data"],
       "skipFiles": ["<node_internals>/**"],
       "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/**/*.js"]
     }
   ]
 }
