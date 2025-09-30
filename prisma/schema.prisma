@@ -25,3 +25,8 @@ model SalesRecord {
   storeAddress String
   createdAt    DateTime @default(now())
 }
+
+model SalesProduct {
+  id          Int    @id @default(autoincrement())
+  productName String
+}

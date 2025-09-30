@@ -1,5 +1,5 @@
 import { PrismaBetterSQLite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "./generated/prisma/client";
+import { PrismaClient } from "../generated/prisma/client";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -10,7 +10,7 @@ const prisma = new PrismaClient({ adapter });
 
 async function main() {
   try {
-    const jsonPath = path.join(process.cwd(), "./data/insert.json");
+    const jsonPath = path.join(process.cwd(), "./data/sales_records.json");
     const salesData = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
 
     for (const record of salesData) {
