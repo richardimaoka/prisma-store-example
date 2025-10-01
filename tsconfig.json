@@ -16,6 +16,8 @@
     "esModuleInterop": true,
 
     // Disallow features that require cross-file awareness
-    "isolatedModules": true
+    "isolatedModules": true,
+
+    "strict": true
   }
 }
