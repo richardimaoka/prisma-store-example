@@ -1,5 +1,5 @@
 import { PrismaBetterSQLite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaClient, SalesProduct } from "../generated/prisma/client";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -7,6 +7,10 @@ const adapter = new PrismaBetterSQLite3({
   url: "file:./prisma/dev.db",
 });
 const prisma = new PrismaClient({ adapter });
+
+function validate(a: any): a is SalesProduct {
+  throw new Error("not implemented");
+}
 
 async function main() {
   try {
