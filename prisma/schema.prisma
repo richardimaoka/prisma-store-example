@@ -30,3 +30,8 @@ model SalesProduct {
   id          Int    @id @default(autoincrement())
   productName String
 }
+
+model AvailableSize {
+  id   Int    @id @default(autoincrement())
+  size String
+}
