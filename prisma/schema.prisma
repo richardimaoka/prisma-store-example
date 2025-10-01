@@ -27,11 +27,14 @@ model SalesRecord {
 }
 
 model SalesProduct {
-  id          Int    @id @default(autoincrement())
+  id          Int             @id @default(autoincrement())
   productName String
+  sizes       AvailableSize[]
 }
 
 model AvailableSize {
-  id   Int    @id @default(autoincrement())
-  size String
+  id             Int          @id @default(autoincrement())
+  size           String
+  SalesProduct   SalesProduct @relation(fields: [salesProductId], references: [id])
+  salesProductId Int
 }
