@@ -1,5 +1,5 @@
 import { PrismaBetterSQLite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient, SalesProduct } from "../generated/prisma/client";
+import { Prisma, PrismaClient, SalesProduct } from "../generated/prisma/client";
 import * as fs from "fs";
 import * as path from "path";
 import { z } from "zod";
@@ -16,7 +16,16 @@ const prisma = new PrismaClient({ adapter });
 function validate(a: any): a is SalesProductCreateInput {
   const schema = z.object({
     productName: z.string(),
+    sizes: {
+      create: [
+        {
+          size: z.string(),
+        },
+      ],
+    },
   }) satisfies z.ZodType<SalesProductCreateInput>;
+
+  const a = {} satisfies Prisma.UserModel;
 
   const result = schema.safeParse(a);
 
