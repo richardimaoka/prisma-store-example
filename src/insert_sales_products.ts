@@ -16,19 +16,16 @@ const prisma = new PrismaClient({ adapter });
 function validate(a: any): a is SalesProductCreateInput {
   const schema = z.object({
     productName: z.string(),
-    sizes: {
-      create: [
-        {
+    sizes: z.object({
+      create: z.array(
+        z.object({
           size: z.string(),
-        },
-      ],
-    },
+        })
+      ),
+    }),
   }) satisfies z.ZodType<SalesProductCreateInput>;
 
-  const a = {} satisfies Prisma.UserModel;
-
   const result = schema.safeParse(a);
-
   return result.success;
 }
 
@@ -40,12 +37,7 @@ async function main() {
     for (const record of salesData) {
       if (validate(record)) {
         await prisma.salesProduct.create({
-          data: {
-            productName: record.productName,
-            sizes: {
-              create: record.sizes,
-            },
-          },
+          data: record,
         });
       }
     }
